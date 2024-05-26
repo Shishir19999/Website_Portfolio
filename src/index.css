@@ -29,7 +29,7 @@ a {
 }
 
 .nav_bar .nav_items:hover {
-  border-bottom: 3px solid yellow;
+  border-bottom: 3px solid rgb(9, 9, 6);
 }
 
 
@@ -120,7 +120,7 @@ a {
   text-align: center;
   padding: 20px;
   border-radius: 10px;
-  border: 1px solid yellow;
+  border: 1px solid rgb(20, 20, 14);
   box-shadow: var(--box-shadow);
 }
 
@@ -149,7 +149,7 @@ color:white;
   justify-content: center;
   align-items: center;
   border-radius: 100%;
-  border: 2px solid yellow;
+  border: 2px solid rgb(20, 20, 14);
 }
 
 .contact-icon .items:hover {
