@@ -1,5 +1,5 @@
 :root {
-  --box-shadow: 5px 5px 10px 10px rgba(101, 175, 10, 0.5);
+  --box-shadow: 5px 5px 10px 10px rgba(141, 146, 127, 0.5);
   --bg-color: rgb(40, 47, 97);
 }
 
@@ -10,7 +10,7 @@ body {
 
 a {
   text-decoration: none;
-  color: white;
+  color: #af9164;
 }
 
 /* Navbar Section */
@@ -48,7 +48,7 @@ a {
   text-align: center;
   padding: 30px;
   border-radius: 10px;
-  border: 1px solid yellow;
+  border: 1px solid rgb(20, 20, 14);
   box-shadow: var(--box-shadow);
 }
 .home .left .typed-cursor{
@@ -64,43 +64,36 @@ a {
 }
 
 .home .right .img img {
-  height: 270px;
-  width: 270px;
-  border: 5px solid yellow;
-  border-radius: 100%;
-  animation-name: superman;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
+  box-sizing: border-box; 
+  height: 320px; 
+  width: 320px; 
+  --color: #28292f; 
+  --border: 10px;   
+  --offset: 30px;  
+  --gap: 5px;      
+  
+  border-radius: 50%;
+  cursor: pointer;
+  padding: calc(var(--border) + var(--gap));
+  border: var(--offset) solid #0000;
+  --_m: radial-gradient(50% 50%, #000 calc(100% - var(--offset)),#0000 calc(100% - var(--border)));
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  --_g: #0000 calc(99% - var(--border)), var(--color) calc(100% - var(--border)) 99%,#0000;
+  --_s: var(--offset);
+  --_r: 100% 100% at;
+  background:
+    radial-gradient(var(--_r) 0    0   ,var(--_g)) calc(100% + var(--_s)) calc(100% + var(--_s)),
+    radial-gradient(var(--_r) 100% 0   ,var(--_g)) calc(0%   - var(--_s)) calc(100% + var(--_s)),
+    radial-gradient(var(--_r) 0    100%,var(--_g)) calc(100% + var(--_s)) calc(0%   - var(--_s)),
+    radial-gradient(var(--_r) 100% 100%,var(--_g)) calc(0%   - var(--_s)) calc(0%   - var(--_s));
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  transition: .4s;
 }
 
-@keyframes superman {
-  0% {
-    border-color: blue;
-    transform: translate(0, 0px);
-    box-shadow: 10px 10px 100px 50px blue;
-  }
-
-  25% {
-    border-color: rgb(239, 244, 11);
-    box-shadow: 10px 10px 100px 50px rgb(239, 244, 11);
-  }
-
-  50% {
-    border-color: rgb(12, 12, 199);
-    transform: translate(0, 10px);
-    box-shadow: 10px 10px 100px 50px rgb(12, 12, 199);
-  }
-
-  75% {
-    border-color: rgb(130, 217, 160);
-    box-shadow: 10px 10px 100px 50px rgb(130, 217, 160);
-  }
-
-  100% {
-    border-color: rgb(50, 55, 205);
-    transform: translate(0, -0px);
-    box-shadow: 10px 10px 100px 50px rgb(50, 55, 205);
-  }
+.home .right .img img:hover {
+  --_s: 0px;
 }
 
 
@@ -134,7 +127,10 @@ a {
 .skills .items .item img {
   width: 70px;
 }
+.skills h3{
 
+color:white;
+}
 /* Contact */
 
 .contact-icon {
