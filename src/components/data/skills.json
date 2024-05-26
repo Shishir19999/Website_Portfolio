@@ -1,34 +1,34 @@
 [
     {
       "title": "HTML",
-      "imageSrc": "img/skills/html.png"
+      "imageSrc": "skills/html.png"
     },
     {
       "title": "CSS",
-      "imageSrc": "img/skills/css.png"
+      "imageSrc": "skills/css.png"
     },
     {
       "title": "JavaScript",
-      "imageSrc": "img/skills/javascript.png"
+      "imageSrc": "skills/javascript.png"
     },
     {
       "title": "React",
-      "imageSrc": "img/skills/react.png"
+      "imageSrc": "skills/react.png"
     },
     {
       "title": "Node",
-      "imageSrc": "img/skills/node.png"
+      "imageSrc": "skills/node.png"
     },
     {
       "title":"Express",
-      "imageSrc":"img/skills/express.png"
+      "imageSrc":"skills/express.png"
     },
    {
       "title": "MongoDB",
-      "imageSrc": "img/skills/mongodb.png"
+      "imageSrc": "skills/mongodb.png"
     },
     {
       "title": "Figma",
-      "imageSrc": "img/skills/figma.png"
+      "imageSrc": "skills/figma.png"
     }
   ]
