@@ -18,8 +18,8 @@ const Projects = () => {
                 className="card bg-dark text-light"
                 style={{
                   width: "18rem",
-                  border: "1px solid yellow",
-                  boxShadow: "5px 5px 10px 10px rgba(101, 175, 10, 0.5)",
+                  border: " 1px solid rgb(20, 20, 14)",
+                  boxShadow: "5px 5px 10px 10px rgba(141, 146, 127, 0.5)",
                 }}
                 data-aos="flip-right"
                 data-aos-duration="1000"
@@ -32,7 +32,7 @@ const Projects = () => {
                     style={{
                       width: "250px",
                       height: "200px",
-                      border: "2px solid yellow",
+                      border: " 1px solid rgb(20, 20, 14)",
                       borderRadius: "10px",
                     }}
                   />
