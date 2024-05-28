@@ -13,11 +13,11 @@ const Skills = () => {
           {skills.map((data, index) => (
             <div
               className="item"
-              key={index} // Using index as the key
+              key={index}
               data-aos="flip-left"
               data-aos-duration="1000"
             >
-              <img src={`${data.imageSrc}`} alt="" />
+              <img src={`assets/${data.imageSrc}`} alt="" />
               <h3>{data.title}</h3>
             </div>
           ))}
