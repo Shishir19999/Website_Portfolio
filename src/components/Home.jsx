@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import pdf from "../pdf/Shishir_Sharma_CV.pdf";
 import hero from "./data/hero.json";
 import Typed from "typed.js";
@@ -43,7 +43,7 @@ const Home = () => {
       </div>
       <div className="right">
         <div className="img" data-aos="fade-up-left" data-aos-duration="1000">
-          <img src={`./${hero.imgSrc}`} alt="hero" />
+          <img src={`${import.meta.env.BASE_URL}${hero.imgSrc}`} alt="hero" />
         </div>
       </div>
     </div>

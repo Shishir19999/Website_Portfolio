@@ -1,4 +1,3 @@
-import React from "react";
 import skills from "./data/skills.json";
 
 const Skills = () => {
@@ -17,7 +16,7 @@ const Skills = () => {
               data-aos="flip-left"
               data-aos-duration="1000"
             >
-              <img src={`assets/${data.imageSrc}`} alt="" />
+              <img src={`${import.meta.env.BASE_URL}assets/${data.imageSrc}`} alt="" />
               <h3>{data.title}</h3>
             </div>
           ))}
