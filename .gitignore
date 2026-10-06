@@ -1,0 +1,16 @@
+node_modules
+dist
+.env
+.env.*
+*.local
+node_modules/
+!.env.example
+!.env.docker.example
+!.env-example
+*.pem
+*.key
+.next/
+dist/
+build/
+coverage/
+*.log
