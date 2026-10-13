@@ -5,7 +5,7 @@ import Skills from './components/Skills.jsx'
 import Projects from './components/Projects.jsx'
 import QASamples from './components/QASamples.jsx'
 import CVPage from './components/CVPage.jsx'
-import { About, Experience, Education, Contact, Footer, Ribbon } from './components/Sections.jsx'
+import { About, Experience, Education, Contact, Footer } from './components/Sections.jsx'
 import { useTheme } from './components/hooks.jsx'
 import { startMotion, remeasure } from './lib/motion.js'
 import { initAos, refreshAos } from './lib/aos.js'
@@ -43,7 +43,6 @@ export default function App() {
       <main id="main" tabIndex={-1}>
         <Hero />
         <About />
-        <Ribbon />
         <Experience />
         <Skills />
         <Projects />

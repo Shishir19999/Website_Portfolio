@@ -20,7 +20,7 @@ export function useTheme() {
     document.documentElement.dataset.theme = theme
     document.documentElement.style.colorScheme = theme
     const meta = document.querySelector('meta[name="theme-color"]')
-    if (meta) meta.setAttribute('content', theme === 'dark' ? '#1b1a16' : '#f3eee1')
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#1c1b18' : '#f6f2e8')
     try { localStorage.setItem('theme', theme) } catch { /* storage unavailable */ }
   }, [theme])
   return [theme, () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))]

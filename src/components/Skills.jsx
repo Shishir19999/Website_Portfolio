@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { BigNum, Tc } from './Sections.jsx'
-import { Squiggle } from './Doodles.jsx'
+import { Tc } from './Sections.jsx'
 import { remeasure } from '../lib/motion.js'
 import { refreshAos } from '../lib/aos.js'
 import groups from '../data/skills.json'
@@ -23,18 +22,11 @@ export default function Skills() {
   useEffect(() => { remeasure(); refreshAos() }, [group, query])
 
   return (
-    <section id="skills" className="section skills ruled" aria-labelledby="skills-h">
-      <BigNum t="03" data-speed="0.1" data-speed-x="0.28" />
+    <section id="skills" className="section" aria-labelledby="skills-h">
       <div className="wrap">
-        <div className="skills-head">
-          <div>
-            <Tc n={3} name="skills" />
-            <h2 id="skills-h" className="h-xl" data-aos="fade-right">The checklist.</h2>
-          </div>
-          <p className="hand skills-note" data-aos="fade-left" data-aos-delay="200">
-            [x] I use it.<br />[~] exposure: I have worked with it while learning, not every day.
-          </p>
-        </div>
+        <Tc n={3} name="skills" />
+        <h2 id="skills-h" className="h2" data-aos="fade-up">The checklist.</h2>
+        <p className="muted">[x] I use it. [~] exposure: worked with it while learning.</p>
 
         <div className="toolbar">
           <div className="search">
@@ -60,7 +52,7 @@ export default function Skills() {
         ) : (
           <div className="skill-sheet">
             {visible.map((g, gi) => (
-              <section key={g.id} className={`skillgroup sg${gi % 3}`} aria-labelledby={`sg-${g.id}`} data-aos={['fade-up', 'fade-right', 'fade-left'][gi % 3]} data-aos-delay={(gi % 2) * 100}>
+              <section key={g.id} className="skillgroup" aria-labelledby={`sg-${g.id}`} data-aos="fade-up" data-aos-delay={(gi % 2) * 60}>
                 <h3 id={`sg-${g.id}`}>{g.title}</h3>
                 <ul className="checks">
                   {g.items.map((i) => (
@@ -70,7 +62,6 @@ export default function Skills() {
                     </li>
                   ))}
                 </ul>
-                {gi % 3 === 0 ? <Squiggle className="sg-squiggle" delay={400} /> : null}
               </section>
             ))}
           </div>

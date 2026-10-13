@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { BigNum, Tc } from './Sections.jsx'
-import { ArrowGlyph, Tape, Arrow } from './Doodles.jsx'
+import { Tc } from './Sections.jsx'
+import { ArrowGlyph } from './Doodles.jsx'
 import { subscribe, wake, remeasure, getMode } from '../lib/motion.js'
 import { refreshAos } from '../lib/aos.js'
 import projects from '../data/projects.json'
@@ -13,7 +13,7 @@ const PEEK_W = 340
 export default function Projects() {
   const [filter, setFilter] = useState('All')
   const list = projects.filter((p) => filter === 'All' || p.categories.includes(filter))
-  const featured = projects.filter((p) => p.featured)
+  const featured = projects.filter((p) => p.featured).slice(0, 3)
   const count = (f) => (f === 'All' ? projects.length : projects.filter((p) => p.categories.includes(f)).length)
 
   const peek = useRef(null)
@@ -56,19 +56,12 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section projects" aria-labelledby="projects-h">
-      <BigNum t="04" data-speed="0.1" data-speed-x="-0.3" className="right" />
       <div className="wrap">
-        <div className="projects-head">
-          <div>
-            <Tc n={4} name="projects" />
-            <h2 id="projects-h" className="h-xxl" data-aos="fade-up" data-aos-duration="900">
-              Fifteen projects.<br /><span className="out">All of them live.</span>
-            </h2>
-          </div>
-          <p className="projects-intro" data-aos="fade-left" data-aos-delay="200">
-            Click a title and the live preview opens. The full-stack ones run their server code in your browser for the preview, so no data leaves your device.
-          </p>
-        </div>
+        <Tc n={4} name="projects" />
+        <h2 id="projects-h" className="h2" data-aos="fade-up">Fifteen projects, all live.</h2>
+        <p className="projects-intro">
+          Click a title to open the live preview. Full-stack ones run their server code in your browser, so no data leaves your device.
+        </p>
 
         {filter === 'All' ? (
           <div className="board" aria-label="Pinned projects">
@@ -78,23 +71,18 @@ export default function Projects() {
                 href={p.live} target="_blank" rel="noopener noreferrer"
                 className={`pin pin${i + 1}`}
                 aria-label={`Live preview: ${p.title}`}
-                data-aos={['fade-right', 'fade-up', 'zoom-in', 'fade-left'][i]}
-                data-aos-delay={(i % 2) * 150}
-                data-aos-duration="1000"
+                data-aos="fade-up" data-aos-delay={i * 60}
               >
-                <Tape className={i % 2 ? 't6' : 't7'} />
                 <span className="frame">
                   <img
                     src={img(p)} alt={`Screenshot of the ${p.title} live preview`}
                     width="720" height="450" loading="lazy" decoding="async"
-                    data-speed="0.07" data-max="26" data-lite="off"
+                    data-speed="0.05" data-max="18" data-lite="off"
                   />
                 </span>
-                <span className="cap hand">{p.title} <ArrowGlyph /></span>
+                <span className="cap">{p.title} <ArrowGlyph /></span>
               </a>
             ))}
-            <Arrow className="board-arrow" delay={500} />
-            <p className="hand board-note" aria-hidden="true">the four I would show first</p>
           </div>
         ) : null}
 
@@ -117,7 +105,7 @@ export default function Projects() {
             <li
               key={p.id}
               className="row"
-              data-aos="fade-up" data-aos-delay={(i % 3) * 60} data-aos-duration="700" data-aos-offset="30"
+              data-aos="fade-up" data-aos-offset="30"
               onPointerEnter={onMove(p)} onPointerMove={onMove(p)}
             >
               <span className="row-no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>

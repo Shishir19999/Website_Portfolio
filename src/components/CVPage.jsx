@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import profile from '../data/profile.json'
 import cv from '../data/cv.json'
-import pdf from '../pdf/Shishir_Sharma_CV.pdf'
+import { CV_URL, CV_NAME } from '../lib/cv.js'
 
 const strip = (u) => u.replace('https://', '')
 
@@ -19,7 +19,7 @@ export default function CVPage() {
       <div className="cv-actions no-print">
         <a className="link-under" href="#home">&larr; Back to portfolio</a>
         <button type="button" className="btn" onClick={() => window.print()}>Print or save as PDF</button>
-        <a className="link-under" href={pdf} download="Shishir_Sharma_CV.pdf">Download CV (PDF)</a>
+        <a className="link-under" href={CV_URL} download={CV_NAME}>Download CV (PDF)</a>
       </div>
       <header className="cv-head">
         <h1>{profile.name}</h1>
