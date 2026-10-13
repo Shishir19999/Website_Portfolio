@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
-import { Icon } from './icons.jsx'
 import profile from '../data/profile.json'
-import skills from '../data/skills.json'
-import projects from '../data/projects.json'
-import cv from '../pdf/Shishir_Sharma_CV.pdf'
+import cv from '../data/cv.json'
+import pdf from '../pdf/Shishir_Sharma_CV.pdf'
 
+const strip = (u) => u.replace('https://', '')
+
+/** Print-friendly page. Content mirrors the downloadable CV exactly. */
 export default function CVPage() {
   useEffect(() => {
     const prev = document.title
@@ -14,51 +15,64 @@ export default function CVPage() {
   }, [])
 
   return (
-    <main id="main" tabIndex={-1} className="cv container">
+    <main id="main" tabIndex={-1} className="cv wrap">
       <div className="cv-actions no-print">
-        <a className="btn btn-ghost" href="#home">&larr; Back to portfolio</a>
-        <button type="button" className="btn btn-primary" onClick={() => window.print()}><Icon name="print" /> Print or save as PDF</button>
-        <a className="btn btn-ghost" href={cv} download="Shishir_Sharma_CV.pdf"><Icon name="download" /> Download CV (PDF)</a>
+        <a className="link-under" href="#home">&larr; Back to portfolio</a>
+        <button type="button" className="btn" onClick={() => window.print()}>Print or save as PDF</button>
+        <a className="link-under" href={pdf} download="Shishir_Sharma_CV.pdf">Download CV (PDF)</a>
       </div>
       <header className="cv-head">
         <h1>{profile.name}</h1>
-        <p className="cv-role">{profile.role} | {profile.location}</p>
-        <p className="cv-links">
-          {profile.links.github.replace('https://', '')} | {profile.links.linkedin.replace('https://', '')} | {profile.links.site.replace('https://', '')}
-        </p>
+        <p className="cv-role">{cv.role} | Lalitpur</p>
+        <p className="cv-links">{strip(profile.links.github)} | {strip(profile.links.linkedin)} | {strip(profile.links.site)}</p>
       </header>
-      <section aria-labelledby="cv-profile"><h2 id="cv-profile">Profile</h2><p>{profile.summary}</p></section>
-      <section aria-labelledby="cv-exp">
-        <h2 id="cv-exp">Professional experience</h2>
-        {profile.experience.map((j) => (
-          <div key={j.title} className="cv-item">
-            <h3>{j.title}, {j.company} <span className="muted">({j.place}, {j.period})</span></h3>
-            <ul>{j.points.map((p) => <li key={p}>{p}</li>)}</ul>
+      <section aria-labelledby="cv-profile"><h2 id="cv-profile">Profile</h2><p>{cv.profile}</p></section>
+      <section aria-labelledby="cv-edu">
+        <h2 id="cv-edu">Education</h2>
+        {cv.education.map((e) => (
+          <div key={e.title} className="cv-item">
+            <h3>{e.title}</h3>
+            <p>{e.school}</p>
+            <p className="muted">{e.period}, {e.place}</p>
           </div>
         ))}
       </section>
       <section aria-labelledby="cv-skills">
         <h2 id="cv-skills">Skills</h2>
         <ul className="cv-skills">
-          {skills.map((g) => <li key={g.id}><strong>{g.title}:</strong> {g.items.map((i) => i.name).join(', ')}</li>)}
+          {cv.skills.map((g) => <li key={g.title}><strong>{g.title}:</strong> {g.items}</li>)}
         </ul>
-      </section>
-      <section aria-labelledby="cv-proj">
-        <h2 id="cv-proj">Selected projects</h2>
-        <ul>
-          {projects.filter((p) => p.featured).map((p) => (
-            <li key={p.id}><strong>{p.title}.</strong> {p.description} <span className="muted">{p.live.replace('https://', '')}</span></li>
-          ))}
-        </ul>
-        <p className="muted">All projects: {profile.links.site.replace('https://', '')}#projects</p>
-      </section>
-      <section aria-labelledby="cv-edu">
-        <h2 id="cv-edu">Education</h2>
-        <ul>{profile.education.map((e) => <li key={e.title}><strong>{e.title}</strong>, {e.school}, {e.place} ({e.period})</li>)}</ul>
       </section>
       <section aria-labelledby="cv-courses">
         <h2 id="cv-courses">Courses</h2>
-        <ul>{profile.courses.map((e) => <li key={e.title}><strong>{e.title}</strong>, {e.school} ({e.period})</li>)}</ul>
+        {cv.courses.map((c) => (
+          <div key={c.title} className="cv-item">
+            <h3>{c.title}</h3>
+            <p>{c.school}</p>
+            <p className="muted">{c.period}{c.place ? `, ${c.place}` : ''}</p>
+          </div>
+        ))}
+      </section>
+      <section aria-labelledby="cv-proj">
+        <h2 id="cv-proj">Projects</h2>
+        {cv.projects.map((p) => (
+          <div key={p.title} className="cv-item">
+            <h3>{p.title}{p.tag ? <span className="muted"> ({p.tag})</span> : null}</h3>
+            <p>{p.text}</p>
+            <p className="muted">{p.period}</p>
+          </div>
+        ))}
+        <p className="muted">More projects with live previews: {strip(profile.links.site)}#projects</p>
+      </section>
+      <section aria-labelledby="cv-exp">
+        <h2 id="cv-exp">Professional experience</h2>
+        {cv.experience.map((j) => (
+          <div key={j.title} className="cv-item">
+            <h3>{j.title}, {j.company}</h3>
+            <p className="muted">{j.period}, {j.place}</p>
+            <ul>{j.points.map((p) => <li key={p}>{p}</li>)}</ul>
+          </div>
+        ))}
       </section>
     </main>
   )

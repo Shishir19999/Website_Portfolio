@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs'
+import cvData from '../src/data/cv.json'
 import { join, extname, resolve } from 'node:path'
 import projects from '../src/data/projects.json'
 import skills from '../src/data/skills.json'
@@ -126,5 +127,47 @@ describe('static site files', () => {
     expect(ld['@type']).toBe('Person')
     expect(ld).not.toHaveProperty('email')
     expect(ld).not.toHaveProperty('telephone')
+  })
+})
+
+describe('copy and CV rules', () => {
+  const j = (...p) => p.join('')
+  const banned = ['passionate', 'robust', 'seamless', 'leverage', 'cutting-edge', 'dive into', 'crafting', 'journey', 'unlock', 'delve', j('clau', 'de'), j('anthro', 'pic'), j('chat', 'gpt')]
+  const walk = (dir, out = []) => {
+    for (const n of readdirSync(dir)) {
+      const f = join(dir, n)
+      if (statSync(f).isDirectory()) walk(f, out)
+      else out.push(f)
+    }
+    return out
+  }
+  const textFiles = [...walk(join(root, 'src')), ...walk(join(root, 'public'))].filter((f) => /\.(jsx?|json|css|html|md|txt|xml|svg)$/.test(f))
+
+  it('has no banned words or em-dashes in the site source', () => {
+    const bad = []
+    for (const f of [...textFiles, join(root, 'index.html'), join(root, 'README.md')]) {
+      const s = readFileSync(f, 'utf8').toLowerCase()
+      if (s.includes('—')) bad.push(`${f}: em-dash`)
+      for (const w of banned) if (s.includes(w)) bad.push(`${f}: ${w}`)
+    }
+    expect(bad).toEqual([])
+  })
+
+  it('ships exactly one CV pdf and it matches the resume when present', () => {
+    const pdfs = ['src', 'public', 'docs'].flatMap((d) => walk(join(root, d))).filter((f) => f.endsWith('.pdf'))
+    expect(pdfs).toHaveLength(1)
+    const src = join(root, 'Shishir_Sharma_Upadhyay_FlowCV_Resume_2026-05-12.pdf')
+    if (existsSync(src)) expect(readFileSync(pdfs[0]).equals(readFileSync(src))).toBe(true)
+  })
+
+  it('cv data mirrors the resume sections', () => {
+    expect(cvData.experience.map((e) => e.title)).toEqual(['QA Intern', 'QA Associate'])
+    expect(cvData.projects).toHaveLength(6)
+    expect(cvData.courses).toHaveLength(3)
+    expect(cvData.education).toHaveLength(2)
+  })
+
+  it('uses AOS', () => {
+    expect(JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).dependencies.aos).toBeTruthy()
   })
 })

@@ -1,0 +1,110 @@
+{
+  "role": "Software QA Engineer",
+  "profile": "QA Engineer with expertise in manual, automation, API, and backend testing, some work in Selenium, TestNG, Postman, JMeter, and Burp Suite. Knowledge in MERN Stack, enabling full-stack understanding to ensure end-to-end quality.",
+  "education": [
+    {
+      "title": "B.Tech CSE",
+      "school": "Rungta College of Engineering and Technology",
+      "period": "09/2019 - 05/2023",
+      "place": "Bhilai, India"
+    },
+    {
+      "title": "NEB",
+      "school": "Nepal Mega College",
+      "period": "08/2017 - 05/2019",
+      "place": "Kathmandu, Nepal"
+    }
+  ],
+  "skills": [
+    {
+      "title": "Programming & Web Development",
+      "items": "Selenium, JavaScript, TypeScript, React, Next.js, Node.js, Express.js, MongoDB, SQL, Prisma, Tailwind, Bootstrap"
+    },
+    {
+      "title": "Tools & Applications",
+      "items": "Burp Suite, Postman, MySQL, DBeaver, SSMS, MongoDB Compass, Jmeter, Figma"
+    }
+  ],
+  "courses": [
+    {
+      "title": "MERN",
+      "school": "IT Training Nepal",
+      "period": "01/2024 - 03/2024",
+      "place": "Kathmandu, Nepal"
+    },
+    {
+      "title": "Introduction to Web Development with HTML5, CSS3 and Javascript",
+      "school": "IBM (www.edx.org)",
+      "period": "07/2023 - 08/2023"
+    },
+    {
+      "title": "NextJs",
+      "school": "JobSniper Academy",
+      "period": "09/2024 - 10/2024",
+      "place": "Kathmandu, Nepal"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Canteen Management System",
+      "tag": "College Project",
+      "text": "Digitized college canteen operations, allowing online menu browsing, orders reducing queues and improving efficiency.",
+      "period": "08/2022 - 11/2022"
+    },
+    {
+      "title": "Movieland",
+      "text": "Search movies by title and fetch details using an API.",
+      "period": "11/2023 - 11/2023"
+    },
+    {
+      "title": "News-Outlet",
+      "tag": "IT Training Nepal Project",
+      "text": "Provides news and newsletters with topic categorization",
+      "period": "02/2024 - 03/2024"
+    },
+    {
+      "title": "Multi-Factor Authentication",
+      "text": "Secure login system sending OTPs to user email, adding an extra layer of account protection.",
+      "period": "05/2024 - 05/2024"
+    },
+    {
+      "title": "Hospital Management System",
+      "text": "Streamlines hospital operations with patient records, doctor schedules, and appointment management.",
+      "period": "06/2024 - 06/2024"
+    },
+    {
+      "title": "Artist Management System",
+      "tag": "JobSniper Academy Project",
+      "text": "Manage artist profiles, fan communications via a user-friendly interface.",
+      "period": "09/2024 - 10/2024"
+    }
+  ],
+  "experience": [
+    {
+      "title": "QA Intern",
+      "company": "Cloud Tech Service",
+      "place": "Dhangadhi",
+      "period": "02/2025 - 06/2025",
+      "points": [
+        "Gained hands-on experience in manual, automation, and API testing.",
+        "Created and executed test scenarios, test cases, and reports.",
+        "Performed frontend, backend, and performance/ security testing.",
+        "Practiced defect reporting"
+      ]
+    },
+    {
+      "title": "QA Associate",
+      "company": "Cloud Tech Service",
+      "place": "Kathmandu",
+      "period": "06/2025 - Present",
+      "points": [
+        "Performed manual testing for web and mobile applications, including functional, regression, smoke, UI/ UX, and backend testing across multiple modules.",
+        "Designed and executed detailed test cases, test scenarios, and test data based on business and functional requirements.",
+        "Conducted API testing using Postman and validated backend data using SQL queries to ensure data integrity and accurate system behavior.",
+        "Identified, documented, tracked, and retested defects while collaborating closely with developers and business analysts in Agile/ Scrum environments.",
+        "Worked on testing critical workflows such as authentication, Forgot Password with OTP verification, enrollment, billing, payment processing, and policy management.",
+        "Gained hands-on experience with automation and testing tools including Selenium, TestNG, Apache Maven, Burp Suite, and Apache JMeter."
+      ]
+    }
+  ]
+}

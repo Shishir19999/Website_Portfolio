@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import { Icon } from './icons.jsx'
-import { Reveal } from './hooks.jsx'
-import { SectionHead } from './Sections.jsx'
+import { useEffect, useState } from 'react'
+import { BigNum, Tc } from './Sections.jsx'
+import { Tape } from './Doodles.jsx'
+import { remeasure } from '../lib/motion.js'
+import { refreshAos } from '../lib/aos.js'
 import qa from '../data/qaSamples.json'
 
 function DataTable({ tab }) {
@@ -77,21 +78,36 @@ export default function QASamples() {
   const [id, setId] = useState(qa.tabs[0].id)
   const tab = qa.tabs.find((t) => t.id === id)
   const View = VIEW[tab.kind]
+  useEffect(() => { remeasure(); refreshAos() }, [id])
   return (
-    <section id="qa-samples" className="section" aria-labelledby="qa-h">
-      <div className="container">
-        <SectionHead eyebrow="QA work samples" title="How I document testing" id="qa-h">
-          Original sample artifacts for my own public{' '}
-          <a href={qa.app.live} target="_blank" rel="noopener noreferrer">{qa.app.name} live preview</a>.
-        </SectionHead>
-        <Reveal className="notice" role="note"><Icon name="doc" /> <span>{qa.app.note}</span></Reveal>
-        <div className="chips" role="group" aria-label="Choose a sample">
-          {qa.tabs.map((t) => (
-            <button key={t.id} type="button" className="chip" aria-pressed={id === t.id} onClick={() => setId(t.id)}>{t.label}</button>
+    <section id="qa-samples" className="section qa" aria-labelledby="qa-h">
+      <BigNum t="05" data-speed="0.1" data-speed-x="0.26" />
+      <div className="wrap">
+        <div className="qa-head">
+          <div>
+            <Tc n={5} name="qa work samples" />
+            <h2 id="qa-h" className="h-xl" data-aos="fade-right">How I write things down.</h2>
+            <p className="qa-intro" data-aos="fade-up" data-aos-delay="150">
+              Sample artifacts for my own public{' '}
+              <a href={qa.app.live} target="_blank" rel="noopener noreferrer">{qa.app.name} live preview</a>.
+            </p>
+          </div>
+          <div className="sticky qa-note" role="note" data-aos="flip-right" data-aos-duration="900">
+            <Tape className="t2" />
+            <span className="hand">read this first</span>
+            <span>{qa.app.note}</span>
+          </div>
+        </div>
+        <div className="textfilter tabs" role="group" aria-label="Choose a sample">
+          {qa.tabs.map((t, i) => (
+            <span key={t.id}>
+              {i > 0 ? <span className="slash" aria-hidden="true"> / </span> : null}
+              <button type="button" aria-pressed={id === t.id} onClick={() => setId(t.id)}>{t.label.toLowerCase()}</button>
+            </span>
           ))}
         </div>
-        <div className="card sample">
-          <p className="sample-intro"><span className="badge">Sample</span> {tab.intro}</p>
+        <div className="sheet" data-aos="fade-up" data-aos-duration="800" data-aos-offset="20">
+          <p className="sample-intro"><span className="stamp small">sample</span> {tab.intro}</p>
           <View tab={tab} />
         </div>
       </div>
