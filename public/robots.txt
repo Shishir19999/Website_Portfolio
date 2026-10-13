@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shishir19999.github.io/Website_Portfolio/sitemap.xml

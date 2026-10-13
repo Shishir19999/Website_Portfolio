@@ -1,0 +1,112 @@
+{
+  "app": {
+    "name": "Multi-Factor Authentication (public sample app)",
+    "live": "https://shishir19999.github.io/Multi-Factor-Authentication/",
+    "note": "Original sample artifacts written against my own public live preview. They show the formats I use. Nothing here comes from an employer, and the defect and API examples are illustrative, not findings about the app."
+  },
+  "tabs": [
+    {
+      "id": "scenarios",
+      "label": "Test scenarios",
+      "kind": "table",
+      "intro": "Scenario list for sign-in with a second step. Scenario type is exactly one of Positive, Negative or Edge Case. Status columns are left open, as they would be before a test cycle starts.",
+      "columns": ["Scenario ID", "Module", "Sub-Module", "Scenarios", "Scenario Type", "QA Status (QAT1)", "QA Status (QAT2)", "Dev Status", "Dev Remarks", "QA Remarks"],
+      "rows": [
+        ["TS-AUTH-01", "Authentication", "Sign in", "Registered user signs in with valid e-mail and password and is asked for the second step", "Positive", "Not run", "Not run", "-", "-", "-"],
+        ["TS-AUTH-02", "Authentication", "Sign in", "Sign in with a valid e-mail and a wrong password shows a generic error", "Negative", "Not run", "Not run", "-", "-", "Check the message does not reveal whether the e-mail exists"],
+        ["TS-OTP-01", "Authentication", "OTP verification", "Correct e-mailed one-time code completes sign in", "Positive", "Not run", "Not run", "-", "-", "-"],
+        ["TS-OTP-02", "Authentication", "OTP verification", "Wrong, empty or non-numeric code is rejected with a clear message", "Negative", "Not run", "Not run", "-", "-", "-"],
+        ["TS-OTP-03", "Authentication", "OTP verification", "Code entered after it has expired, or a previous code after requesting a new one", "Edge Case", "Not run", "Not run", "-", "-", "Confirm which code is valid after Resend"],
+        ["TS-LOCK-01", "Authentication", "Lockout", "Repeated failed attempts lock the account and a later correct attempt is handled as the policy states", "Edge Case", "Not run", "Not run", "-", "-", "-"],
+        ["TS-REC-01", "Authentication", "Recovery", "A backup code is accepted once and rejected when reused", "Edge Case", "Not run", "Not run", "-", "-", "-"]
+      ]
+    },
+    {
+      "id": "frontend",
+      "label": "Frontend test cases",
+      "kind": "table",
+      "intro": "Frontend test cases in the spreadsheet-friendly format I use: short numbered steps, preconditions, postconditions, expected and actual results, and a regression flag. Actual Result and Test Result are blank until executed.",
+      "columns": ["Test Scenario ID", "Module", "Sub-Module", "Test Case ID", "Test Summary", "Input", "Preconditions", "Test Procedure", "Test Data", "Postcondition", "Expected Result", "Actual Result", "Test Result", "Include in Regression?", "Related Defects", "Remarks"],
+      "rows": [
+        ["TS-AUTH-01", "Authentication", "Sign in", "TC-AUTH-001", "Valid credentials lead to the second step", "E-mail, password", "A registered account exists. User is signed out.", "1. Open the live preview.\n2. Go to Sign in.\n3. Enter e-mail and password.\n4. Click Sign in.", "Sample account created for testing", "User is on the verification step, not yet signed in", "The second-step screen is shown with the available methods. No dashboard is visible yet.", "", "", "Yes", "-", "Smoke test candidate"],
+        ["TS-AUTH-02", "Authentication", "Sign in", "TC-AUTH-002", "Wrong password is rejected", "E-mail, wrong password", "A registered account exists. User is signed out.", "1. Open Sign in.\n2. Enter the e-mail and a wrong password.\n3. Click Sign in.", "Valid e-mail, password with one character changed", "User stays on Sign in", "A generic error is shown. The password field is cleared or masked. No second-step screen appears.", "", "", "Yes", "-", "-"],
+        ["TS-OTP-02", "Authentication", "OTP verification", "TC-OTP-001", "Letters in the code field", "Code: abc123", "User is on the e-mailed code step.", "1. Type letters and digits into the code field.\n2. Submit.", "abc123", "User is still on the code step", "Input is restricted or rejected with a clear message. The attempt does not sign the user in.", "", "", "Yes", "-", "Negative case"],
+        ["TS-OTP-03", "Authentication", "OTP verification", "TC-OTP-002", "Resend invalidates the previous code", "Old code after Resend", "User requested a code, then clicked Resend.", "1. Request a code and note it.\n2. Click Resend and note the new code.\n3. Enter the first code.", "Two consecutive codes", "User is still on the code step", "The first code is rejected. The newest code is accepted.", "", "", "Yes", "-", "Edge case. Confirm against the policy shown in the app."]
+      ]
+    },
+    {
+      "id": "api",
+      "label": "API test cases",
+      "kind": "table",
+      "intro": "API test cases in the backend format I use. The endpoints and bodies are placeholders for a generic sign-in API, written to show the format. They are not the real routes of the sample app, and results are blank until executed.",
+      "columns": ["Test Scenario ID", "Module", "Sub-Module", "Test Case ID", "Request Type", "Test case Description", "API Endpoint", "Headers", "Authorization Type", "Query Parameters", "Request Body (JSON/form-data)", "Test Steps", "Expected Result", "Expected Response Code", "Actual Result", "Actual Response Code", "Response Time (ms)", "Status", "Error Message", "Attachment", "Remarks"],
+      "rows": [
+        ["TS-AUTH-01", "Authentication", "Sign in", "API-AUTH-001", "POST", "Valid credentials return a pending second-step response", "{{baseUrl}}/auth/login", "Content-Type: application/json", "None", "-", "{ \"email\": \"{{email}}\", \"password\": \"{{password}}\" }", "1. Send the request.\n2. Check status and body.", "Body states that a second step is required and contains no session token.", "200", "", "", "", "", "-", "-", "Positive"],
+        ["TS-AUTH-02", "Authentication", "Sign in", "API-AUTH-002", "POST", "Wrong password returns an authentication error", "{{baseUrl}}/auth/login", "Content-Type: application/json", "None", "-", "{ \"email\": \"{{email}}\", \"password\": \"wrong-value\" }", "1. Send the request.\n2. Check status and error body.", "Generic error message. No hint about whether the e-mail exists.", "401", "", "", "", "", "Invalid credentials", "-", "Negative"],
+        ["TS-AUTH-03", "Authentication", "Sign in", "API-AUTH-003", "POST", "Missing password field is rejected", "{{baseUrl}}/auth/login", "Content-Type: application/json", "None", "-", "{ \"email\": \"{{email}}\" }", "1. Send the request without the password field.", "Validation error naming the missing field.", "400", "", "", "", "", "Password is required", "-", "Negative"],
+        ["TS-OTP-02", "Authentication", "OTP verification", "API-OTP-001", "POST", "Wrong code is rejected", "{{baseUrl}}/auth/verify-code", "Content-Type: application/json", "Pending-session token", "-", "{ \"code\": \"000000\" }", "1. Sign in to reach the second step.\n2. Send a wrong code.", "Request is rejected and no full session is issued.", "401", "", "", "", "", "Invalid code", "-", "Negative"]
+      ]
+    },
+    {
+      "id": "defect",
+      "label": "Defect report",
+      "kind": "defect",
+      "intro": "A defect report in the structure I use. This one is illustrative: it demonstrates the format and is not a real finding about the sample app.",
+      "fields": [
+        ["Defect ID", "DEF-SAMPLE-001"],
+        ["Title", "Code field accepts letters on the e-mailed code step"],
+        ["Status", "New (illustrative example)"],
+        ["Module / Sub-module", "Authentication / OTP verification"],
+        ["Severity / Priority", "Medium / Medium"],
+        ["Environment", "Chrome (desktop), live preview of the sample app"],
+        ["Reported by", "Shishir Sharma"],
+        ["Assigned to", "Developer (example)"],
+        ["Related test case", "TC-OTP-001"]
+      ],
+      "steps": [
+        "Open the live preview and go to Sign in.",
+        "Sign in with a registered account to reach the e-mailed code step.",
+        "Type abc123 into the code field and submit."
+      ],
+      "expected": "Letters are blocked or the form shows a clear validation message, and the user stays on the code step.",
+      "actual": "Example only: the form submits and shows a generic failure. A specific message would help the user correct the input.",
+      "notes": "Attach a screenshot and, for API-level issues, the request and response captured in the proxy tool. Retest after the fix and re-run the linked regression cases."
+    },
+    {
+      "id": "postman",
+      "label": "Postman example",
+      "kind": "code",
+      "intro": "A Postman-style request with environment variables and a test script. The route is a placeholder for a generic sign-in API.",
+      "blocks": [
+        {
+          "title": "Request",
+          "code": "POST {{baseUrl}}/auth/login\nContent-Type: application/json\n\n{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
+        },
+        {
+          "title": "Tests (post-response script)",
+          "code": "pm.test(\"Status code is 200\", () => {\n  pm.response.to.have.status(200);\n});\n\npm.test(\"Second step is required\", () => {\n  const body = pm.response.json();\n  pm.expect(body.nextStep).to.exist;\n  pm.expect(body).to.not.have.property(\"token\");\n});\n\npm.test(\"Responds in under 1000 ms\", () => {\n  pm.expect(pm.response.responseTime).to.be.below(1000);\n});\n\n// Pass data to the next request in the chain\npm.environment.set(\"pendingToken\", pm.response.json().pendingToken);"
+        },
+        {
+          "title": "Environment variables",
+          "code": "baseUrl       = https://example.test/api\nemail         = (sample account, set locally)\npassword      = (set locally, never committed)\npendingToken  = (set by the script above)"
+        }
+      ]
+    },
+    {
+      "id": "strategy",
+      "label": "Test strategy",
+      "kind": "strategy",
+      "intro": "A one-page test strategy for the sample app's sign-in and second-step flows.",
+      "sections": [
+        { "title": "Scope", "items": ["In scope: registration, sign in, e-mailed code, authenticator app and passkey steps, backup codes, lockout, session handling.", "Out of scope: load testing and third-party mail delivery."] },
+        { "title": "Objectives", "items": ["Confirm each sign-in path works for valid users.", "Confirm invalid, expired and reused credentials are rejected safely.", "Confirm error messages are clear and do not leak account details."] },
+        { "title": "Test types", "items": ["Functional and UI/UX checks", "Negative and edge-case testing", "API testing with Postman", "Basic security checks with a proxy tool", "Regression after each fix"] },
+        { "title": "Approach", "items": ["Derive scenarios from the feature list, then test cases per scenario.", "Prioritise sign in and code verification, then recovery and lockout.", "Report every defect with steps, expected and actual results, and evidence."] },
+        { "title": "Entry and exit criteria", "items": ["Entry: build deployed, sample accounts available, scenarios reviewed.", "Exit: all planned cases executed, no open high-severity defects, regression cases passed."] },
+        { "title": "Tools", "items": ["Browser developer tools, Postman, Burp Suite, SQL client for data checks, a spreadsheet or test-management sheet for cases."] },
+        { "title": "Risks", "items": ["Time-limited codes make some cases timing sensitive.", "Lockout cases change account state, so they need dedicated accounts."] },
+        { "title": "Deliverables", "items": ["Scenario list, frontend and API test cases, defect reports, regression selection, a short test summary."] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "name": "Shishir Sharma Upadhyay",
+  "shortName": "Shishir Sharma",
+  "role": "Software QA Engineer",
+  "location": "Lalitpur, Nepal",
+  "typedRoles": ["QA Engineer", "API Tester", "Test Automation", "MERN Developer"],
+  "tagline": "Manual, automation, API and backend testing, backed by hands-on full-stack development.",
+  "links": {
+    "github": "https://github.com/Shishir19999",
+    "linkedin": "https://linkedin.com/in/shishir-sharma-12b388198",
+    "site": "https://shishir19999.github.io/Website_Portfolio/"
+  },
+  "summary": "QA Engineer with expertise in manual, automation, API and backend testing, working with Selenium, TestNG, Postman, JMeter and Burp Suite. Knowledge of the MERN stack gives me a full-stack understanding, so I can follow a defect from the screen, through the API, down to the data.",
+  "about": [
+    "I am a Software QA Engineer based in Lalitpur, Nepal. Day to day I test web and mobile applications: functional, regression, smoke, UI/UX and backend testing across multiple modules, working with developers and business analysts in Agile/Scrum teams.",
+    "Outside of work I build full-stack applications with React, Next.js, Node.js, Express and MongoDB. Building the software I test helps me ask better questions about requirements, validation, error handling and data integrity."
+  ],
+  "focus": [
+    {
+      "title": "Test design",
+      "icon": "clipboard",
+      "text": "Scenarios, test cases and test data written from business and functional requirements, covering positive, negative and edge cases, with regression selection and reproducible defect reports."
+    },
+    {
+      "title": "API and data checks",
+      "icon": "api",
+      "text": "REST API testing with Postman (headers, authorization, status codes, response bodies, scripts and request chaining) and SQL queries to validate backend data."
+    },
+    {
+      "title": "Automation",
+      "icon": "robot",
+      "text": "Selenium with Java, Maven and TestNG, and Cypress with TypeScript for registration workflows using page objects, dynamic test data, API-assisted flows and Mochawesome reports with screenshots and video."
+    }
+  ],
+  "experience": [
+    {
+      "title": "QA Associate",
+      "company": "Cloud Tech Service",
+      "place": "Kathmandu",
+      "period": "06/2025 - Present",
+      "current": true,
+      "points": [
+        "Manual testing of web and mobile applications: functional, regression, smoke, UI/UX and backend testing across multiple modules.",
+        "Designed and executed detailed test cases, test scenarios and test data based on business and functional requirements.",
+        "API testing with Postman and backend data validation with SQL queries to confirm data integrity and accurate system behaviour.",
+        "Identified, documented, tracked and retested defects, collaborating closely with developers and business analysts in Agile/Scrum environments.",
+        "Tested critical workflows such as authentication, Forgot Password with OTP verification, enrollment, billing, payment processing and policy management.",
+        "Hands-on with automation and testing tools including Selenium, TestNG, Apache Maven, Burp Suite and Apache JMeter."
+      ]
+    },
+    {
+      "title": "QA Intern",
+      "company": "Cloud Tech Service",
+      "place": "Dhangadhi",
+      "period": "02/2025 - 06/2025",
+      "current": false,
+      "points": [
+        "Gained hands-on experience in manual, automation and API testing.",
+        "Created and executed test scenarios, test cases and reports.",
+        "Performed frontend, backend, and performance and security testing.",
+        "Practiced defect reporting."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "title": "B.Tech, Computer Science and Engineering",
+      "school": "Rungta College of Engineering and Technology",
+      "place": "Bhilai, India",
+      "period": "09/2019 - 05/2023"
+    },
+    {
+      "title": "NEB",
+      "school": "Nepal Mega College",
+      "place": "Kathmandu, Nepal",
+      "period": "08/2017 - 05/2019"
+    }
+  ],
+  "courses": [
+    { "title": "NextJs", "school": "JobSniper Academy", "place": "Kathmandu, Nepal", "period": "09/2024 - 10/2024" },
+    { "title": "MERN", "school": "IT Training Nepal", "place": "Kathmandu, Nepal", "period": "01/2024 - 03/2024" },
+    { "title": "Introduction to Web Development with HTML5, CSS3 and JavaScript", "school": "IBM, via edX", "place": "Online", "period": "07/2023 - 08/2023" }
+  ]
+}
