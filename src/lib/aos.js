@@ -7,9 +7,9 @@ const MQ = '(prefers-reduced-motion: reduce)'
 export function initAos() {
   const run = () => {
     AOS.init({
-      duration: 800,
+      duration: 500,
       easing: 'ease-out-cubic',
-      offset: 70,
+      offset: 60,
       once: true,
       disable: () => window.matchMedia(MQ).matches,
     })

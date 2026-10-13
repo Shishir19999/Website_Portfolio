@@ -115,7 +115,7 @@ describe('forbidden content', () => {
 })
 
 describe('static site files', () => {
-  it.each(['public/robots.txt', 'public/sitemap.xml', 'public/404.html', 'public/favicon.svg', 'public/og-image.png', 'src/pdf/Shishir_Sharma_CV.pdf'])(
+  it.each(['public/robots.txt', 'public/sitemap.xml', 'public/404.html', 'public/favicon.svg', 'public/og-image.png', 'public/Shishir_Sharma_CV.pdf'])(
     '%s exists',
     (f) => expect(existsSync(join(root, f))).toBe(true),
   )
@@ -155,7 +155,7 @@ describe('copy and CV rules', () => {
 
   it('ships exactly one CV pdf and it matches the resume when present', () => {
     const pdfs = ['src', 'public', 'docs'].flatMap((d) => walk(join(root, d))).filter((f) => f.endsWith('.pdf'))
-    expect(pdfs).toHaveLength(1)
+    expect(pdfs.map((f) => f.replaceAll('\\', '/').split('/').slice(-2).join('/'))).toEqual(['public/Shishir_Sharma_CV.pdf'])
     const src = join(root, 'Shishir_Sharma_Upadhyay_FlowCV_Resume_2026-05-12.pdf')
     if (existsSync(src)) expect(readFileSync(pdfs[0]).equals(readFileSync(src))).toBe(true)
   })
@@ -165,6 +165,12 @@ describe('copy and CV rules', () => {
     expect(cvData.projects).toHaveLength(6)
     expect(cvData.courses).toHaveLength(3)
     expect(cvData.education).toHaveLength(2)
+  })
+
+  it('links the CV through the stable public URL', () => {
+    const src = readFileSync(join(root, 'src/lib/cv.js'), 'utf8')
+    expect(src).toContain('Shishir_Sharma_CV.pdf')
+    expect(src).toContain('BASE_URL')
   })
 
   it('uses AOS', () => {
