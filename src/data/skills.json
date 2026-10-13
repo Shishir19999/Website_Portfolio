@@ -1,0 +1,90 @@
+[
+  {
+    "id": "qa",
+    "title": "QA & Testing",
+    "icon": "bug",
+    "items": [
+      { "name": "Manual testing", "icon": "bug" },
+      { "name": "Functional testing", "icon": "check" },
+      { "name": "Regression testing", "icon": "repeat" },
+      { "name": "Smoke testing", "icon": "check" },
+      { "name": "Exploratory testing", "icon": "search" },
+      { "name": "UI/UX testing", "icon": "figma" },
+      { "name": "Test scenarios and test cases", "icon": "clipboard" },
+      { "name": "Positive, negative and edge-case design", "icon": "clipboard" },
+      { "name": "Defect reporting and retesting", "icon": "bug" },
+      { "name": "Agile / Scrum", "icon": "repeat" }
+    ]
+  },
+  {
+    "id": "automation",
+    "title": "Automation",
+    "icon": "robot",
+    "items": [
+      { "name": "Selenium", "icon": "selenium" },
+      { "name": "TestNG", "icon": "check" },
+      { "name": "Apache Maven", "icon": "maven" },
+      { "name": "Java", "icon": "java" },
+      { "name": "Cypress", "icon": "cypress" },
+      { "name": "Page Object Model", "icon": "clipboard" },
+      { "name": "Dynamic test data", "icon": "database" },
+      { "name": "Mochawesome reports", "icon": "clipboard" }
+    ]
+  },
+  {
+    "id": "api",
+    "title": "API & Backend",
+    "icon": "api",
+    "items": [
+      { "name": "Postman", "icon": "postman" },
+      { "name": "REST API testing", "icon": "api" },
+      { "name": "Request chaining and scripts", "icon": "postman" },
+      { "name": "SQL data validation", "icon": "database" },
+      { "name": "MySQL", "icon": "mysql" },
+      { "name": "JSON", "icon": "json" }
+    ]
+  },
+  {
+    "id": "security",
+    "title": "Security & Performance",
+    "icon": "shield",
+    "items": [
+      { "name": "Burp Suite", "icon": "burp" },
+      { "name": "Authentication and authorization checks", "icon": "shield" },
+      { "name": "Apache JMeter", "icon": "jmeter" },
+      { "name": "OWASP ZAP", "icon": "owasp", "exposure": true },
+      { "name": "k6", "icon": "k6", "exposure": true }
+    ]
+  },
+  {
+    "id": "web",
+    "title": "Web Development",
+    "icon": "code",
+    "items": [
+      { "name": "JavaScript", "icon": "javascript" },
+      { "name": "TypeScript", "icon": "typescript" },
+      { "name": "React", "icon": "react" },
+      { "name": "Next.js", "icon": "nextjs" },
+      { "name": "Node.js", "icon": "nodejs" },
+      { "name": "Express.js", "icon": "express" },
+      { "name": "MongoDB", "icon": "mongodb" },
+      { "name": "Prisma", "icon": "prisma" },
+      { "name": "Tailwind CSS", "icon": "tailwind" },
+      { "name": "Bootstrap", "icon": "bootstrap" },
+      { "name": "HTML5 and CSS3", "icon": "html5" }
+    ]
+  },
+  {
+    "id": "tools",
+    "title": "Tools",
+    "icon": "wrench",
+    "items": [
+      { "name": "Figma", "icon": "figma" },
+      { "name": "Git", "icon": "git" },
+      { "name": "GitHub", "icon": "github" },
+      { "name": "DBeaver", "icon": "dbeaver" },
+      { "name": "SQL Server Management Studio", "icon": "database" },
+      { "name": "MongoDB Compass", "icon": "mongodb" }
+    ]
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "artist", "title": "Artist Management System", "repo": "Artist-Management-System",
+    "live": "https://shishir19999.github.io/Artist-Management-System/",
+    "image": "assets/projects/artist.webp", "featured": true,
+    "categories": ["Full-stack"],
+    "tags": ["Next.js", "Prisma", "TypeScript", "3 roles"],
+    "description": "Artist, music and booking management with three role-based workspaces (artist manager, artist, user), analytics, playlists, audio previews and an audit trail."
+  },
+  {
+    "id": "hospital", "title": "Hospital Management Application", "repo": "Hospital-Management-Application",
+    "live": "https://shishir19999.github.io/Hospital-Management-Application/",
+    "image": "assets/projects/hospital.webp", "featured": true,
+    "categories": ["Full-stack"],
+    "tags": ["MERN", "React 19", "Express", "MongoDB", "6 roles"],
+    "description": "Patients, doctors and appointments with visit history, outpatient queue and triage, vitals, billing and role-based workspaces for the people running a clinic."
+  },
+  {
+    "id": "mfa", "title": "Multi-Factor Authentication", "repo": "Multi-Factor-Authentication",
+    "live": "https://shishir19999.github.io/Multi-Factor-Authentication/",
+    "image": "assets/projects/mfa.webp", "featured": true,
+    "categories": ["Full-stack", "QA/Security"],
+    "tags": ["TOTP", "Passkeys", "OTP", "React", "Express"],
+    "description": "Account-security product: password sign-in with a second step (e-mailed one-time code, authenticator app or passkey), recovery options, step-up checks, sessions and an admin console."
+  },
+  {
+    "id": "ecommerce", "title": "E-commerce ShopLane", "repo": "E-commerce",
+    "live": "https://shishir19999.github.io/E-commerce/",
+    "image": "assets/projects/ecommerce.webp", "featured": true,
+    "categories": ["Full-stack"],
+    "tags": ["MERN", "JWT", "Customer / Seller / Admin"],
+    "description": "Online store with three roles: shoppers, sellers and admins. Product pages, compare, checkout, order tracking and seller and admin dashboards."
+  },
+  {
+    "id": "social", "title": "Social Media Platform (Orbit)", "repo": "Social-Media-Platfrom",
+    "live": "https://shishir19999.github.io/Social-Media-Platfrom/",
+    "image": "assets/projects/social.webp",
+    "categories": ["Full-stack"],
+    "tags": ["MERN", "Socket.IO", "Moderation", "Real-time DMs"],
+    "description": "Social network with profiles, following, hashtags, comments, polls, reactions, direct messages, private accounts and a moderation toolkit."
+  },
+  {
+    "id": "stocks", "title": "Stock Market Portfolio", "repo": "Stock-Market-Portfolio",
+    "live": "https://shishir19999.github.io/Stock-Market-Portfolio/",
+    "image": "assets/projects/stocks.webp",
+    "categories": ["Full-stack"],
+    "tags": ["MERN", "Paper trading", "Charts"],
+    "description": "Portfolio and trading tracker with paper trading, realized and unrealized P&L, allocation, a screener, goals, price alerts and printable reports."
+  },
+  {
+    "id": "chat", "title": "Chat Room", "repo": "Chat-Room",
+    "live": "https://shishir19999.github.io/Chat-Room/",
+    "image": "assets/projects/chat.webp",
+    "categories": ["Frontend", "Full-stack"],
+    "tags": ["React", "Peer-to-peer", "Real-time"],
+    "description": "Real-time chat room with presence, typing indicators, threads, reactions, direct messages and private rooms. The static site runs peer-to-peer, browser to browser."
+  },
+  {
+    "id": "news", "title": "News Outlet", "repo": "News-Outlet",
+    "live": "https://shishir19999.github.io/News-Outlet/",
+    "image": "assets/projects/news.webp",
+    "categories": ["Full-stack"],
+    "tags": ["MERN", "PWA", "Editorial workflow"],
+    "description": "News publication platform where readers, writers, editors and admins share one app: editorial review workflow, live blogs, newsletters and personalised feeds."
+  },
+  {
+    "id": "bookstore", "title": "Bookstore (Folio Books)", "repo": "Bookstore-Ecommerce-App",
+    "live": "https://shishir19999.github.io/Bookstore-Ecommerce-App/",
+    "image": "assets/projects/bookstore.webp",
+    "categories": ["Full-stack"],
+    "tags": ["MERN", "E-books", "Role-based back office"],
+    "description": "Online bookstore built around books and readers: multiple editions per book, an in-browser e-book reader, reading goals, book clubs and a role-based back office."
+  },
+  {
+    "id": "college", "title": "College Mini Project (FoodShop)", "repo": "College-Mini-Project",
+    "live": "https://shishir19999.github.io/College-Mini-Project/",
+    "image": "assets/projects/college.webp",
+    "categories": ["Full-stack"],
+    "tags": ["MERN", "Food ordering", "Live kitchen queue"],
+    "description": "Food-ordering app grown from a college mini project into a full-stack app with accounts, roles, a live kitchen queue, order tracking and an admin area."
+  },
+  {
+    "id": "movieland", "title": "Movieland", "repo": "Movieland-api",
+    "live": "https://shishir19999.github.io/Movieland-api/",
+    "image": "assets/projects/movieland.webp",
+    "categories": ["Frontend"],
+    "tags": ["React", "Vite", "PWA", "Offline"],
+    "description": "Movie discovery app: search and filter, named lists, ratings, a viewing diary, stats, recommendations and a quiz. Works offline as an installable PWA."
+  },
+  {
+    "id": "calculator", "title": "Calculator Hub", "repo": "Simple-interest-calculator",
+    "live": "https://shishir19999.github.io/Simple-interest-calculator/",
+    "image": "assets/projects/calculator.webp",
+    "categories": ["Frontend", "Tools"],
+    "tags": ["JavaScript", "PWA", "116 calculators"],
+    "description": "116 calculators in one static, offline-capable site: a smart calculator, scientific, programmer and graphing modes, finance tools and converters."
+  },
+  {
+    "id": "login", "title": "Login Templates", "repo": "Login-template",
+    "live": "https://shishir19999.github.io/Login-template/",
+    "image": "assets/projects/login.webp",
+    "categories": ["Frontend"],
+    "tags": ["HTML", "CSS", "JavaScript", "Forms"],
+    "description": "Two login page designs with a complete demo flow: sign in, register with a password strength meter, forgot password and a signed-in state."
+  },
+  {
+    "id": "rwt", "title": "RWT Tasks", "repo": "RWT_TASK",
+    "live": "https://shishir19999.github.io/RWT_TASK/",
+    "image": "assets/projects/rwt.webp",
+    "categories": ["Frontend"],
+    "tags": ["HTML", "CSS", "JavaScript", "Slider"],
+    "description": "Two front-end practice tasks: a coming-soon slider with autoplay controls and a login form."
+  },
+  {
+    "id": "simplilearn", "title": "Simplilearn Clone", "repo": "Simplilearn",
+    "live": "https://shishir19999.github.io/Simplilearn/",
+    "image": "assets/projects/simplilearn.webp",
+    "categories": ["Frontend"],
+    "tags": ["HTML", "SCSS", "JavaScript"],
+    "description": "Front-end practice clone of an online-learning homepage with a searchable course catalog and light and dark themes. Sample content, not affiliated with the original."
+  }
+]

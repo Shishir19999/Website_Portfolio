@@ -14,3 +14,9 @@ dist/
 build/
 coverage/
 *.log
+
+# private source material (employer notes, timesheet, resume copy) - never commit
+Shishir_Development_and_QA_Master_Notes.md
+Shishir_Sharma_CV_Master_History.md
+Shishir_Sharma_Upadhyay_FlowCV_Resume_*.pdf
+timesheet_*.xlsx
